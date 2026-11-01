@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><title>Ayuda de Inventario forestal LiDAR</title></head>
+<body><p><b>Suite integrada:</b> FCC usa siempre primeros retornos >2 m sobre primeros retornos totales, antes de cualquier filtro de métricas. Procesamiento obligatorio en disco local. La configuración está en la cabecera compartida.</p>
+<h1>Inventario forestal LiDAR · Ayuda</h1>
+<p>Guía incluida en el complemento, disponible sin conexión. Los enlaces al portal requieren Internet.</p>
+<p><a href="#preparar">Preparación</a> · <a href="#ejecutar">Ejecución</a> · <a href="#pausa">Pausa y reanudación</a> · <a href="#metricas">Métricas y FPC</a> · <a href="#errores">Problemas frecuentes</a></p>
+<h2 id="preparar">1. Preparación</h2>
+<p>Instale QGIS 3.34 o posterior, FUSION 4.61 con sus bibliotecas LAZ y Google Chrome en Windows. FUSION no está incluido. Instale el ZIP sin descomprimir desde el administrador de complementos y reinicie QGIS al actualizar.</p>
+<ul>
+<li><b>Centros e ID:</b> seleccione una capa Point o MultiPoint y un campo único, no nulo. Se procesan todas las entidades, no sólo las seleccionadas. Los ID se conservan como texto.</li>
+<li><b>Multipuntos:</b> con un centro se admiten directamente. Para entidades con varios centros active «Separar multipuntos»: genera &lt;ID&gt;__p1, &lt;ID&gt;__p2, etc. La correspondencia se guarda en parcelas_entrada.json; la capa original se conserva.</li>
+<li><b>CRS:</b> reproyecte los centros al UTM de las teselas: EPSG:25828–25831 o EPSG:4083. No se reproyectan las nubes. «Asumir CRS» sólo se debe activar para archivos sin CRS si ha verificado su referencia.</li>
+<li><b>Radio:</b> 15 m por defecto. <b>Celda MDT:</b> 1 m por defecto. <b>Distancia máxima sin apoyo:</b> 5 m por defecto; comprueba apoyo de puntos y suelo clase 2, sin certificar ausencia de huecos menores.</li>
+<li><b>Carpeta de trabajo:</b> ruta absoluta sin espacios; reserve espacio para originales, LAS y resultados. <b>FUSION:</b> indique la carpeta de sus ejecutables, normalmente C:&#92;FUSION.</li>
+<li><b>Descargas de Chrome:</b> seleccione la carpeta real donde guarda Chrome; admite espacios y puede estar reubicada.</li>
+</ul>
+<h2 id="ejecutar">2. Ejecución y descargas</h2>
+<p>Pulse «Ejecutar / reanudar». El complemento busca PNOA3 y valida las huellas. Abre la ficha oficial de cada tesela pendiente en Chrome habitual. Pulse «Descargar» y complete la licencia o CAPTCHA si CNIG lo solicita. Mantenga el nombre y espere a que termine. No son necesarias extensiones ni automatización del navegador.</p>
+<p>El complemento detecta el LAZ completo, lo copia a originales/ y conserva el archivo de Descargas. Continúa con conversión, MDT, recorte circular, normalización, métricas y exportación. «Volver a abrir ficha» únicamente abre la ficha oficial.</p>
+<h2 id="lotes">Descarga por lotes asistida (máximo 20)</h2>
+<p>La opción «Descarga por lotes asistida» está activada por defecto. Puede elegir entre 1 y 20 hojas por lote. Desactívela para volver al modo por ficha. Se agrupan sólo las hojas pendientes; los originales verificados se reutilizan.</p>
+<ol><li>Al comenzar cada lote se abre una guía local en Chrome, con los nombres y enlaces de las hojas necesarias.</li>
+<li>Abra las fichas indicadas y añada esas hojas a la cesta del CNIG. Esta selección es manual: el complemento no rellena la cesta ni lee las cookies de Chrome.</li>
+<li>Revise el contenido de la cesta: no debe superar 20 archivos en total ni incluir hojas de otros trabajos. El complemento no vacía ni modifica su cesta.</li>
+<li>Desde el enlace «cesta oficial», pulse «Iniciar descarga» y complete los pasos oficiales que solicite el portal. Chrome puede pedir permiso para descargar varios archivos.</li>
+<li>Guarde los LAZ individuales, sin renombrarlos, en la carpeta «Descargas de Chrome». No se reciben ni extraen paquetes ZIP.</li>
+<li>El complemento incorpora los archivos completos en cualquier orden y conserva la fuente. Cada hoja obtiene su recibo SHA-256. Cuando termine el lote se abre la guía del siguiente, si quedan hojas.</li>
+<li>Antes del siguiente lote, revise o retire de la cesta las hojas anteriores. «Volver a abrir lote» abre otra vez la misma guía; no inicia nuevas descargas.</li></ol>
+<p>El tiempo de espera es de una hora sin incorporar otra hoja del lote, sin contar la pausa. En caso de cancelación o error se conservan las hojas completas: vuelva a ejecutar con la misma carpeta y sólo se preparan las pendientes. La autorización final depende del CNIG; no se garantizan un único clic ni una única autorización para todo el lote.</p>
+<p>La cesta de dos hojas LIDA3 y el control de 20 archivos sin sesión se inspeccionaron en el portal el 1 de noviembre de 2026. La transferencia final de los LAZ no se ejecutó en esta investigación; el flujo real completo requiere validación en Windows/Chrome.</p>
+<h2 id="pausa">3. Pausa, reanudación y cancelación</h2>
+<ul>
+<li><b>Pausar:</b> solicita una pausa. «Retirar pausa» permite anularla antes de que sea efectiva. El registro muestra «En pausa» al alcanzarla, y el botón cambia a «Reanudar».</li>
+<li><b>FUSION activo:</b> termina el comando actual antes de pausar. Un cálculo largo puede tardar en llegar a la pausa. No se suspende ni se mata FUSION para pausar.</li>
+<li><b>Consultas y archivos:</b> la pausa se aplica al siguiente punto de comprobación. Una petición de red o una operación de sistema bloqueada debe devolver el control primero.</li>
+<li><b>Chrome:</b> sus descargas continúan mientras el complemento está en pausa. La pausa no consume el límite de espera de una hora por tesela. Al reanudar, se buscan los archivos que hayan terminado.</li>
+<li><b>Reanudar:</b> continúa la misma ejecución. Mantenga QGIS abierto y las carpetas disponibles. La pausa no sobrevive al cierre de QGIS ni al apagado del equipo.</li>
+<li><b>Cancelar:</b> también funciona durante la pausa; detiene el trabajo y el proceso FUSION activo. Chrome sigue abierto. Cerrar el diálogo durante una tarea solicita cancelación.</li>
+<li><b>Ejecutar / reanudar tras cancelar o reiniciar:</b> seleccione de nuevo la misma configuración y carpeta de trabajo. Reutiliza originales y conversiones verificadas; crea una nueva ejecución de resultados y recalcula métricas. No continúa una instrucción FUSION a medias.</li>
+</ul>
+<h2 id="metricas">4. Métricas y FPC a 2 m</h2>
+<p>Active la altura de corte y seleccione <b>2 m</b>. El corte se aplica a alturas normalizadas. Sin filtro, las estadísticas CloudMetrics usan todos los retornos y la cobertura sigue utilizando un umbral de 2 m.</p>
+<table border="1" cellpadding="5"><tr><th>Campo</th><th>Contenido por parcela</th></tr>
+<tr><td>n_primeros_retornos</td><td>Todos los retornos de orden 1, incluidos suelo, alturas negativas y cero.</td></tr>
+<tr><td>n_primeros_retornos_sobre_corte</td><td>Primeros retornos con altura estrictamente superior al umbral; exactamente 2 m queda fuera si el corte es 2 m.</td></tr>
+<tr><td>altura_cobertura_m</td><td>Umbral utilizado; compruebe que vale 2 para FPC a 2 m.</td></tr>
+<tr><td>cobertura_primeros_retornos_pct</td><td>100 × primeros retornos sobre el corte / primeros retornos totales.</td></tr>
+<tr><td>n_puntos / n_puntos_metricas</td><td>Total de puntos del recorte / retornos usados para estadísticas; no son el denominador de primeros retornos.</td></tr></table>
+<p><b>FPC = n_primeros_retornos_sobre_corte / n_primeros_retornos.</b> Divida cobertura_primeros_retornos_pct entre 100 para obtener un ratio entre 0 y 1. El denominador procede de la nube completa antes de filtrar por altura. Sin primeros retornos, la cobertura queda vacía/NULL, no cero.</p>
+<p>Las columnas cm_ conservan los resultados de CloudMetrics. El indicador puede incluir matorral por encima del corte; no equivale automáticamente a una medición de cobertura arbolada de campo. Use un protocolo coherente al calibrar modelos.</p>
+<h2 id="errores">5. Resultados y problemas frecuentes</h2>
+<p>En resultados/&lt;ejecución&gt;/ encontrará metricas.csv, metricas.gpkg, estado.json y proceso.log. Cada parcela conserva cobertura_retornos.json y sus archivos de cálculo. El estado registra «paused» mientras la pausa es efectiva.</p>
+<ul>
+<li><b>No se detecta una descarga:</b> revise la carpeta de Chrome, el nombre del LAZ y que haya desaparecido .crdownload. No renombre ni borre originales para forzar una reanudación.</li>
+<li><b>CNIG deniega acceso:</b> complete los pasos oficiales en Chrome. El complemento no sustituye ni evita CAPTCHA, licencias o autorización.</li>
+<li><b>Sin cobertura o apoyo:</b> revise CRS, huellas oficiales, teselas vecinas y suelo clase 2. No interprete cobertura parcial como resultado válido.</li>
+<li><b>FUSION falla:</b> consulte la fase, ejecutable y código en proceso.log, fusion.log si existe y estado.json. Compruebe las dependencias oficiales y variantes de 64 bits. No se generan métricas cuando falla el cálculo.</li>
+<li><b>Unidad de red no disponible:</b> restablezca acceso antes de reanudar. Consulte la ruta de diagnóstico alternativo si aparece en el registro.</li>
+</ul>
+<p>La validación Linux usa FUSION simulado. El cálculo real, la sesión de Chrome y la pausa durante FUSION requieren comprobación en Windows.</p>
+<p><a href="https://centrodedescargas.cnig.es/CentroDescargas/catalogo.do?Serie=LIDA3">Abrir catálogo oficial PNOA3 del CNIG</a></p>
+</body></html>

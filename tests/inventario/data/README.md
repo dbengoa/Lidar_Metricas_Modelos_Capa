@@ -1,0 +1,1 @@
+Fixtures extraídas de respuestas CNIG HTTP 200, 18-10-2026. archivosSerie POST LIDA3 para lon=-7.414, lat=43.161; localizarCoordsSec POST sec=12752563. Sólo fila de catálogo y geometría, sin sesión, cookies, reCAPTCHA ni tokens. Datos CNIG, atribución conforme CC-BY 4.0. No son teselas ni una descarga LAZ. Indentación del HTML normalizada, sin alterar filas ni atributos.

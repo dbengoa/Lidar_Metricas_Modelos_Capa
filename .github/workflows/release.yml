@@ -1,0 +1,44 @@
+name: Suite LiDAR forestal integrada
+on:
+  push:
+    branches: [main]
+    paths: ['lidar_forestal_integrado/**', 'tests/**', 'tools/**', '.github/workflows/**', 'RELEASE.md']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: suite-release
+  cancel-in-progress: false
+jobs:
+  test-build-release:
+    runs-on: ubuntu-24.04
+    env:
+      QT_QPA_PLATFORM: offscreen
+      MPLBACKEND: Agg
+      MPLCONFIGDIR: /tmp/suite-matplotlib
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install QGIS testing dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends python3-qgis python3-pandas python3-matplotlib
+      - name: Test all three modules and their integration
+        run: /usr/bin/python3 -m unittest discover -s tests -v
+      - name: Build deterministic installer
+        run: |
+          /usr/bin/python3 tools/build.py
+          cd dist
+          sha256sum -c *.zip.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lidar_forestal_integrado_instalador
+          path: dist/*
+      - name: Create experimental release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version=$(/usr/bin/python3 -c "import configparser; c=configparser.ConfigParser(); c.read('lidar_forestal_integrado/metadata.txt'); print(c['general']['version'])")
+          tag="suite-v${version}-experimental-${GITHUB_SHA:0:7}"
+          gh release create "$tag" "dist/lidar_forestal_integrado-${version}-experimental.zip" "dist/lidar_forestal_integrado-${version}-experimental.zip.sha256" \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --prerelease \
+            --title "LiDAR forestal integrado ${version} experimental" --notes-file RELEASE.md

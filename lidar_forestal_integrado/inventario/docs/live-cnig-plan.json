@@ -1,0 +1,186 @@
+{
+  "series": "LIDA3",
+  "edition_policy": "newest_flight_year_then_highest_npc",
+  "queries": [
+    {
+      "id": "live_four_tile_corner",
+      "candidate_secs": [
+        "12752563",
+        "12726205",
+        "12744109",
+        "12739748"
+      ]
+    }
+  ],
+  "selected": [
+    {
+      "sec": "12752563",
+      "name": "PNOA-2024-GAL-628-4780-H29-NPC01.LAZ",
+      "series": "LIDA3",
+      "official_footprint_wgs84": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "MultiPolygon",
+              "coordinates": [
+                [
+                  [
+                    [
+                      -7.413417605,
+                      43.152755479
+                    ],
+                    [
+                      -7.425712005,
+                      43.15292534
+                    ],
+                    [
+                      -7.42548085,
+                      43.161926686
+                    ],
+                    [
+                      -7.413184646,
+                      43.161756772
+                    ],
+                    [
+                      -7.413417605,
+                      43.152755479
+                    ]
+                  ]
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sec": "12726205",
+      "name": "PNOA-2024-GAL-628-4781-H29-NPC01.LAZ",
+      "series": "LIDA3",
+      "official_footprint_wgs84": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "MultiPolygon",
+              "coordinates": [
+                [
+                  [
+                    [
+                      -7.413184644,
+                      43.161756862
+                    ],
+                    [
+                      -7.425480847,
+                      43.161926776
+                    ],
+                    [
+                      -7.425249585,
+                      43.170928107
+                    ],
+                    [
+                      -7.412951578,
+                      43.17075814
+                    ],
+                    [
+                      -7.413184644,
+                      43.161756862
+                    ]
+                  ]
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sec": "12744109",
+      "name": "PNOA-2024-GAL-629-4780-H29-NPC01.LAZ",
+      "series": "LIDA3",
+      "official_footprint_wgs84": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "MultiPolygon",
+              "coordinates": [
+                [
+                  [
+                    [
+                      -7.40112319,
+                      43.152584296
+                    ],
+                    [
+                      -7.413417482,
+                      43.152755477
+                    ],
+                    [
+                      -7.413184523,
+                      43.16175677
+                    ],
+                    [
+                      -7.400888428,
+                      43.161585535
+                    ],
+                    [
+                      -7.40112319,
+                      43.152584296
+                    ]
+                  ]
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "sec": "12739748",
+      "name": "PNOA-2024-GAL-629-4781-H29-NPC01.LAZ",
+      "series": "LIDA3",
+      "official_footprint_wgs84": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "MultiPolygon",
+              "coordinates": [
+                [
+                  [
+                    [
+                      -7.400888425,
+                      43.161585625
+                    ],
+                    [
+                      -7.413184521,
+                      43.16175686
+                    ],
+                    [
+                      -7.412951455,
+                      43.170758138
+                    ],
+                    [
+                      -7.400653555,
+                      43.170586849
+                    ],
+                    [
+                      -7.400888425,
+                      43.161585625
+                    ]
+                  ]
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "excluded": []
+}

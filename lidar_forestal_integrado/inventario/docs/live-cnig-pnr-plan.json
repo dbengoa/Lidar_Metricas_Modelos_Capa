@@ -1,0 +1,62 @@
+{
+  "series": "LIDA3",
+  "edition_policy": "newest_flight_year_then_highest_npc",
+  "queries": [
+    {
+      "id": "probe",
+      "candidate_secs": [
+        "12183731"
+      ]
+    }
+  ],
+  "selected": [
+    {
+      "sec": "12183731",
+      "name": "PNOA-2024-PNR-523-4654-NPC01.laz",
+      "series": "LIDA3",
+      "official_footprint_wgs84": {
+        "type": "FeatureCollection",
+        "features": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "MultiPolygon",
+              "coordinates": [
+                [
+                  [
+                    [
+                      -2.722117332,
+                      42.037705626,
+                      1847.49
+                    ],
+                    [
+                      -2.710035636,
+                      42.03767574,
+                      1847.49
+                    ],
+                    [
+                      -2.71007657,
+                      42.028669249,
+                      1489.066
+                    ],
+                    [
+                      -2.722156561,
+                      42.028699126,
+                      1489.066
+                    ],
+                    [
+                      -2.722117332,
+                      42.037705626,
+                      1847.49
+                    ]
+                  ]
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "excluded": []
+}

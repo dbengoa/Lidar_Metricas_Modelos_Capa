@@ -1,0 +1,14 @@
+[
+  {
+    "id": "live_four_tile_corner",
+    "secs": [
+      "12752563",
+      "12726205",
+      "12744109",
+      "12739748"
+    ],
+    "uncovered_area_m2": 0.0,
+    "tolerance_m": 0.02,
+    "method": "official_cnig_footprint_union"
+  }
+]

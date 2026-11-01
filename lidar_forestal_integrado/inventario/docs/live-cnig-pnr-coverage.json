@@ -1,0 +1,11 @@
+[
+  {
+    "id": "probe",
+    "secs": [
+      "12183731"
+    ],
+    "uncovered_area_m2": 0.0,
+    "tolerance_m": 0.02,
+    "method": "official_cnig_footprint_union"
+  }
+]

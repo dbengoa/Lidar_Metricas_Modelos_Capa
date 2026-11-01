@@ -1,0 +1,109 @@
+test_acquire_download_and_resume_without_browser (test_auto_qgis.AutomaticTests.test_acquire_download_and_resume_without_browser) ... skipped 'QGIS/GDAL no disponibles'
+test_auto_engine_filtered_metrics_export_and_preservation (test_auto_qgis.AutomaticTests.test_auto_engine_filtered_metrics_export_and_preservation) ... skipped 'QGIS/GDAL no disponibles'
+test_auto_engine_needs_no_user_files_or_index (test_auto_qgis.AutomaticTests.test_auto_engine_needs_no_user_files_or_index) ... skipped 'QGIS/GDAL no disponibles'
+test_query_axis_order_and_official_coverage_at_four_tile_corner (test_auto_qgis.AutomaticTests.test_query_axis_order_and_official_coverage_at_four_tile_corner) ... skipped 'QGIS/GDAL no disponibles'
+test_real_official_footprint_reprojection (test_auto_qgis.AutomaticTests.test_real_official_footprint_reprojection) ... skipped 'QGIS/GDAL no disponibles'
+test_cancel_does_not_close_chrome (test_browser.BrowserTests.test_cancel_does_not_close_chrome) ... ok
+test_changing_file_not_adopted_until_stable (test_browser.BrowserTests.test_changing_file_not_adopted_until_stable) ... ok
+test_copy_detects_source_change_and_removes_partial (test_browser.BrowserTests.test_copy_detects_source_change_and_removes_partial) ... ok
+test_existing_original_reused_without_browser (test_browser.BrowserTests.test_existing_original_reused_without_browser) ... ok
+test_html_ignored (test_browser.BrowserTests.test_html_ignored) ... ok
+test_names (test_browser.BrowserTests.test_names) ... ok
+test_normal_chrome_copy_preserves_original (test_browser.BrowserTests.test_normal_chrome_copy_preserves_original) ... ok
+test_partial_ignored (test_browser.BrowserTests.test_partial_ignored) ... ok
+test_reopen_event_opens_only_official_detail (test_browser.BrowserTests.test_reopen_event_opens_only_official_detail) ... ok
+test_symlink_ignored (test_browser.BrowserTests.test_symlink_ignored) ... ok
+test_wrong_tile_ignored (test_browser.BrowserTests.test_wrong_tile_ignored) ... ok
+test_chrome_all_windows_installations_and_path_without_edge (test_browser_selection.BrowserSelectionTests.test_chrome_all_windows_installations_and_path_without_edge) ... ok
+test_chrome_local_install_is_used_even_with_edge_elsewhere (test_browser_selection.BrowserSelectionTests.test_chrome_local_install_is_used_even_with_edge_elsewhere) ... ok
+test_actual_official_response (test_cnig.CatalogTests.test_actual_official_response) ... ok
+test_cancel_before_network (test_cnig.CatalogTests.test_cancel_before_network) ... ok
+test_empty_is_distinct_from_broken_response (test_cnig.CatalogTests.test_empty_is_distinct_from_broken_response) ... ok
+test_footprint_response_contract (test_cnig.CatalogTests.test_footprint_response_contract) ... ok
+test_missing_zone_does_not_override_known_mismatch_or_editions (test_cnig.CatalogTests.test_missing_zone_does_not_override_known_mismatch_or_editions) ... ok
+test_pagination_and_duplicate_ids (test_cnig.CatalogTests.test_pagination_and_duplicate_ids) ... ok
+test_pnr_filename_without_zone_reported_on_windows (test_cnig.CatalogTests.test_pnr_filename_without_zone_reported_on_windows) ... ok
+test_row_pairing_not_parallel_arrays (test_cnig.CatalogTests.test_row_pairing_not_parallel_arrays) ... ok
+test_version_policy (test_cnig.CatalogTests.test_version_policy) ... ok
+test_cancel_before_download (test_core.CoreTests.test_cancel_before_download) ... ok
+test_circle_can_exclude_uncovered_bbox_corners (test_core.CoreTests.test_circle_can_exclude_uncovered_bbox_corners) ... ok
+test_existing_original_reused_and_not_changed (test_core.CoreTests.test_existing_original_reused_and_not_changed) ... ok
+test_failure_and_cancel_write_state (test_core.CoreTests.test_failure_and_cancel_write_state) ... ok
+test_four_tile_corner_and_dedup (test_core.CoreTests.test_four_tile_corner_and_dedup) ... ok
+test_hole_not_just_center_or_perimeter (test_core.CoreTests.test_hole_not_just_center_or_perimeter) ... ok
+test_ids_and_radius (test_core.CoreTests.test_ids_and_radius) ... ok
+test_index_duplicate_and_wrong_crs (test_core.CoreTests.test_index_duplicate_and_wrong_crs) ... ok
+test_las_truncated_empty_html_and_compressed (test_core.CoreTests.test_las_truncated_empty_html_and_compressed) ... ok
+test_missing_authorization (test_core.CoreTests.test_missing_authorization) ... ok
+test_overlapping_versions_rejected (test_core.CoreTests.test_overlapping_versions_rejected) ... ok
+test_parameters (test_core.CoreTests.test_parameters) ... ok
+test_process_cancellation (test_core.CoreTests.test_process_cancellation) ... ok
+test_process_nonzero (test_core.CoreTests.test_process_nonzero) ... ok
+test_url_policy (test_core.CoreTests.test_url_policy) ... ok
+test_bad_cutoffs_and_truncated_input (test_first_return_cover.FirstReturnCoverTests.test_bad_cutoffs_and_truncated_input) ... ok
+test_cancel_and_read_error_are_not_hidden (test_first_return_cover.FirstReturnCoverTests.test_cancel_and_read_error_are_not_hidden) ... ok
+test_formats_0_to_10_ground_denominator_and_strict_cutoff (test_first_return_cover.FirstReturnCoverTests.test_formats_0_to_10_ground_denominator_and_strict_cutoff) ... ok
+test_ground_only_cover_is_real_zero (test_first_return_cover.FirstReturnCoverTests.test_ground_only_cover_is_real_zero) ... ok
+test_no_first_returns_is_missing_not_zero (test_first_return_cover.FirstReturnCoverTests.test_no_first_returns_is_missing_not_zero) ... ok
+test_scaled_offset_negative_and_fractional_heights (test_first_return_cover.FirstReturnCoverTests.test_scaled_offset_negative_and_fractional_heights) ... ok
+test_32_only_supported (test_fusion.FusionTests.test_32_only_supported) ... ok
+test_controlled_working_directory_and_separate_log (test_fusion.FusionTests.test_controlled_working_directory_and_separate_log) ... ok
+test_converter_preserves_working_32_bit_laszip_pair (test_fusion.FusionTests.test_converter_preserves_working_32_bit_laszip_pair) ... ok
+test_dll_error_is_distinguished (test_fusion.FusionTests.test_dll_error_is_distinguished) ... ok
+test_nonfusion_process_unchanged (test_fusion.FusionTests.test_nonfusion_process_unchanged) ... ok
+test_only_64_installation_is_accepted (test_fusion.FusionTests.test_only_64_installation_is_accepted) ... ok
+test_prefers_available_64_bit_programs (test_fusion.FusionTests.test_prefers_available_64_bit_programs) ... ok
+test_signed_and_unsigned_crash_status (test_fusion.FusionTests.test_signed_and_unsigned_crash_status) ... ok
+test_startup_crash_preserves_exact_command (test_fusion.FusionTests.test_startup_crash_preserves_exact_command) ... ok
+test_empty_or_inconsistent_metrics_rejected (test_height_cutoff.HeightCutoffTests.test_empty_or_inconsistent_metrics_rejected) ... ok
+test_filtered_metadata_and_ids (test_height_cutoff.HeightCutoffTests.test_filtered_metadata_and_ids) ... ok
+test_invalid_threshold (test_height_cutoff.HeightCutoffTests.test_invalid_threshold) ... ok
+test_no_filter_metadata (test_height_cutoff.HeightCutoffTests.test_no_filter_metadata) ... ok
+test_switch_only_changes_metrics (test_height_cutoff.HeightCutoffTests.test_switch_only_changes_metrics) ... ok
+test_zero_is_filter_and_fraction_uses_decimal_point (test_height_cutoff.HeightCutoffTests.test_zero_is_filter_and_fraction_uses_decimal_point) ... ok
+test_content_deduplication_and_provenance (test_local.LocalTests.test_content_deduplication_and_provenance) ... ok
+test_discovery_cancellation (test_local.LocalTests.test_discovery_cancellation) ... ok
+test_invalid_envelope_scale_record (test_local.LocalTests.test_invalid_envelope_scale_record) ... ok
+test_known_mismatch_never_overridden (test_local.LocalTests.test_known_mismatch_never_overridden) ... ok
+test_local_four_neighbors_and_overlap (test_local.LocalTests.test_local_four_neighbors_and_overlap) ... ok
+test_metadata_evlr_and_truncation (test_local.LocalTests.test_metadata_evlr_and_truncation) ... ok
+test_metadata_las12_geokey (test_local.LocalTests.test_metadata_las12_geokey) ... ok
+test_metadata_laz_header_without_decompression (test_local.LocalTests.test_metadata_laz_header_without_decompression) ... ok
+test_missing_crs_requires_explicit_assumption (test_local.LocalTests.test_missing_crs_requires_explicit_assumption) ... ok
+test_bad_geometry_ids_and_empty_layer_are_diagnosed (test_point_layers.PointLayersTests.test_bad_geometry_ids_and_empty_layer_are_diagnosed) ... skipped 'QGIS no disponible en este intérprete'
+test_generated_ids_cannot_collide_with_original_ids (test_point_layers.PointLayersTests.test_generated_ids_cannot_collide_with_original_ids) ... skipped 'QGIS no disponible en este intérprete'
+test_points_and_singleton_multipoints_preserve_ids_and_source (test_point_layers.PointLayersTests.test_points_and_singleton_multipoints_preserve_ids_and_source) ... skipped 'QGIS no disponible en este intérprete'
+test_real_multipoint_requires_opt_in_and_keeps_mapping (test_point_layers.PointLayersTests.test_real_multipoint_requires_opt_in_and_keeps_mapping) ... skipped 'QGIS no disponible en este intérprete'
+test_dialog_default_radius_and_fusion (test_qgis.QgisTests.test_dialog_default_radius_and_fusion) ... skipped 'QGIS/GDAL no disponibles en este intérprete'
+test_gpkg_csv_ids_and_geometry (test_qgis.QgisTests.test_gpkg_csv_ids_and_geometry) ... skipped 'QGIS/GDAL no disponibles en este intérprete'
+test_local_engine_without_index_and_conversion_cache (test_qgis.QgisTests.test_local_engine_without_index_and_conversion_cache) ... skipped 'QGIS/GDAL no disponibles en este intérprete'
+test_local_point_support_missing_neighbor_and_ground (test_qgis.QgisTests.test_local_point_support_missing_neighbor_and_ground) ... skipped 'QGIS/GDAL no disponibles en este intérprete'
+test_terrain_hole_and_complete (test_qgis.QgisTests.test_terrain_hole_and_complete) ... skipped 'QGIS/GDAL no disponibles en este intérprete'
+test_wkt_crs_and_compound (test_qgis.QgisTests.test_wkt_crs_and_compound) ... skipped 'QGIS/GDAL no disponibles en este intérprete'
+test_einval_reopens_and_retries_same_range (test_storage.LASReadTests.test_einval_reopens_and_retries_same_range) ... ok
+test_large_range_reads_are_bounded_and_exact (test_storage.LASReadTests.test_large_range_reads_are_bounded_and_exact) ... ok
+test_metadata_retries_einval_without_altering_file (test_storage.LASReadTests.test_metadata_retries_einval_without_altering_file) ... ok
+test_partial_range_is_discarded_before_retry (test_storage.LASReadTests.test_partial_range_is_discarded_before_retry) ... ok
+test_read_error_preserves_errno_filename_and_offset (test_storage.LASReadTests.test_read_error_preserves_errno_filename_and_offset) ... ok
+test_both_logs_unavailable_do_not_raise (test_storage.StorageTests.test_both_logs_unavailable_do_not_raise) ... ok
+test_cancel_during_retry_preserves_previous_snapshot (test_storage.StorageTests.test_cancel_during_retry_preserves_previous_snapshot) ... ok
+test_cancellation_and_authorization_survive_failed_final_write (test_storage.StorageTests.test_cancellation_and_authorization_survive_failed_final_write) ... ok
+test_checkpoint_failure_stops_and_keeps_diagnostic (test_storage.StorageTests.test_checkpoint_failure_stops_and_keeps_diagnostic) ... ok
+test_concurrent_writers_use_different_temporaries (test_storage.StorageTests.test_concurrent_writers_use_different_temporaries) ... ok
+test_disk_full_is_not_retried (test_storage.StorageTests.test_disk_full_is_not_retried) ... ok
+test_failed_replacement_preserves_previous_json (test_storage.StorageTests.test_failed_replacement_preserves_previous_json) ... ok
+test_log_failure_uses_alternate_file (test_storage.StorageTests.test_log_failure_uses_alternate_file) ... ok
+test_missing_parent_is_not_recreated (test_storage.StorageTests.test_missing_parent_is_not_recreated) ... ok
+test_processing_error_not_replaced_by_final_state_failure (test_storage.StorageTests.test_processing_error_not_replaced_by_final_state_failure) ... ok
+test_success_is_not_reported_if_final_write_fails (test_storage.StorageTests.test_success_is_not_reported_if_final_write_fails) ... ok
+test_transient_missing_path_is_retried (test_storage.StorageTests.test_transient_missing_path_is_retried) ... ok
+test_windows_access_denied_replacement_is_bounded_and_retried (test_storage.StorageTests.test_windows_access_denied_replacement_is_bounded_and_retried) ... ok
+test_cross_tile_halo_is_unfiltered_rectangle (test_terrain_subset.TerrainSubsetTests.test_cross_tile_halo_is_unfiltered_rectangle) ... ok
+test_fail_fast_is_explained_without_claiming_root_cause (test_terrain_subset.TerrainSubsetTests.test_fail_fast_is_explained_without_claiming_root_cause) ... ok
+test_invalid_buffer_is_rejected (test_terrain_subset.TerrainSubsetTests.test_invalid_buffer_is_rejected) ... ok
+test_single_input_retains_ground_class_and_cutoff_only_in_metrics (test_terrain_subset.TerrainSubsetTests.test_single_input_retains_ground_class_and_cutoff_only_in_metrics) ... ok
+
+----------------------------------------------------------------------
+Ran 104 tests in 0.880s
+
+OK (skipped=15)

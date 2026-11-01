@@ -1,0 +1,14 @@
+[general]
+name=LiDAR forestal integrado
+version=0.1.0
+qgisMinimumVersion=3.34
+author=dbengoa
+email=
+description=Inventario, modelización y cartografía forestal LiDAR en tres módulos
+about=Suite experimental con motor LiDAR compartido, modelos.json y cuadrícula dasométrica de 20 m. Procesamiento FUSION en Windows; modelización con NumPy, pandas y matplotlib de QGIS.
+category=Analysis
+experimental=True
+hasProcessingProvider=False
+repository=https://github.com/dbengoa/Lidar_Metricas_Modelos_Capa
+tracker=https://github.com/dbengoa/Lidar_Metricas_Modelos_Capa/issues
+homepage=https://github.com/dbengoa/Lidar_Metricas_Modelos_Capa

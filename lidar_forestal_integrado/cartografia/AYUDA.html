@@ -15,7 +15,7 @@
 <h2>Modelos del segundo complemento</h2>
 <p>Seleccione <b>modelos.json</b> generado por Modelización forestal LiDAR y asigne las respuestas: N_ha → N_HA, V_ha → VOL_HA, G_ha → AB_HA. Si sus columnas tienen otros nombres, seleccione las ecuaciones correspondientes y compruebe unidades (pies/ha, m³/ha, m²/ha). No copie ecuaciones a mano ni cambie de formato.</p>
 <p>Indique si las columnas cm_ de su CSV de ajuste se calcularon sin corte o sólo con alturas >2 m. El archivo actual no guarda ese dato y el programa no lo adivina. Las columnas cm_gt2_ siempre usan el corte >2 m. Se calculan métricas adicionales si hacen falta. Esta selección nunca cambia FCC ni HDOM_M: ambos usan la nube completa.</p>
-<p>Se admiten modelos de media, lineales y potenciales. El intercepto potencial exportado ya incluye Duan: se conserva sin multiplicar otra vez. Se usan las medianas de calibración para valores ausentes y se marcan IMPUTADO. Se conservan predicciones fuera de rango y negativas con avisos; dominio inválido: NULL. No se reajusta ningún modelo y no se ejecuta el texto de sus ecuaciones.</p>
+<p>Se admiten modelos de media, lineales y potenciales. El intercepto potencial exportado ya incluye Duan: se conserva sin multiplicar otra vez. Se usan las medianas de calibración para valores ausentes y se marcan IMPUTADO. Se conservan predicciones fuera de rango con avisos; las negativas se convierten a cero y se marcan NEGATIVA_A_CERO; dominio inválido: NULL. No se reajusta ningún modelo y no se ejecuta el texto de sus ecuaciones.</p>
 <p>Un predictor inexistente produce un error explícito. La densidad de retornos usa 400 m². Los modelos que requieran radio_m se rechazan porque las celdas no son parcelas circulares. El predictor FCC_lidar_primeros_gt2_pct se entrega como porcentaje al modelo; FCC de salida es ratio. No se utilizan regresiones de FCC o Hdom del archivo para alterar sus definiciones fijas.</p>
 <h2>Cuadrícula</h2>
 <p>Cuadrados completos de 400 m² alineados con múltiplos de 20 en UTM. Se incluyen los que intersectan el polígono con área positiva. No se recortan en los bordes: las métricas usan el cuadrado completo, incluida la porción exterior al polígono. BORDE y FRAC_AOI documentan el borde. Los huecos interiores completos no generan celdas.</p>
@@ -28,7 +28,7 @@
 <ul><li>ID_CELDA, AREA_M2, FRAC_AOI y BORDE: geometría y relación con el polígono.</li>
 <li>FCC: ratio; HDOM_M: metros; N_HA: pies/ha; VOL_HA: m³/ha; AB_HA: m²/ha.</li>
 <li>N_PRIM, N_PRIM_2 y N_PUNTOS: denominador, numerador y total de puntos.</li>
-<li>EST_LIDAR, EST_N, EST_VOL y EST_AB: estado de cada cálculo. Variables sin ecuación: NULL/SIN_MODELO. IMPUTADO, FUERA_RANGO, NEGATIVA o DOMINIO_INVALIDO indican otros avisos de modelos.</li></ul>
+<li>EST_LIDAR, EST_N, EST_VOL y EST_AB: estado de cada cálculo. Variables sin ecuación: NULL/SIN_MODELO. IMPUTADO, FUERA_RANGO, NEGATIVA_A_CERO o DOMINIO_INVALIDO indican otros avisos de modelos.</li></ul>
 <p>Conserve protocolo_cartografia.json, cuadricula.json, métricas y registros. Los puntos intermedios de soporte no son el resultado cartográfico: utilice cartografia_20m.shp/gpkg.</p>
 <h2>Pausa y errores</h2>
 <p>FUSION termina el comando activo antes de pausar. Reanudar requiere mantener QGIS abierto. Cancelar detiene la tarea, no Chrome. Tras reiniciar, reutilice la misma carpeta para aprovechar originales y conversiones verificadas. Una celda fallida detiene la ejecución; no se exporta una capa final incompleta como válida. Consulte proceso.log, fusion.log y estado.json.</p>

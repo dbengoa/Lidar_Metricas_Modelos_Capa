@@ -17,6 +17,18 @@ class ModelsTests(unittest.TestCase):
         model=m.fit_model(X,y,list(X),'lineal',m.Options())
         np.testing.assert_allclose(model['coeficientes'],[2,3],rtol=1e-12)
         np.testing.assert_allclose(m.predict_model(model,X),y,atol=1e-12)
+    def test_zero_floor_is_used_before_validation_scores(self):
+        X=pd.DataFrame({'altura':[1.,2.,3.]})
+        model={'familia':'lineal','predictores':['altura'],'intercepto':-2.,
+               'coeficientes':[1.], 'medianas':[2.]}
+        predicted=m.predict_model(model,X)
+        np.testing.assert_array_equal(predicted,[0.,0.,1.])
+        metrics=m.scores(np.array([0.,0.,1.]),predicted)
+        self.assertEqual(metrics['rmse'],0.)
+        self.assertEqual(metrics['sesgo'],0.)
+        self.assertEqual(metrics['predicciones_negativas'],0)
+        self.assertIn('max(0,',m.equation('V_ha',model))
+
     def test_power_equation_and_retransformation(self):
         X=pd.DataFrame({'altura':np.linspace(2,30,50)})
         y=2.5*X.altura.to_numpy()**1.4
@@ -130,7 +142,7 @@ class ModelsTests(unittest.TestCase):
             self.assertIn('fuera_rango',result.V_ha_estado.iloc[1])
             self.assertIn('imputado',result.V_ha_estado.iloc[2])
             self.assertIn('prediccion_negativa',result.G_ha_estado.iloc[0])
-            self.assertLess(result.G_ha.iloc[0],0)
+            self.assertEqual(result.G_ha.iloc[0],0)
     def test_invalid_numeric_data_and_options_fail(self):
         for text in ('infinito','inf','1,25'):
             with self.assertRaises(ValueError):m.numeric(pd.Series([text],name='V_ha'))

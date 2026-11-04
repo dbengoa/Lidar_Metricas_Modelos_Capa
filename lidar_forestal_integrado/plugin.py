@@ -77,7 +77,7 @@ class Dialog(QDialog):
         self.latest_metrics=None
         self.latest_models=None
         self.inventory=self.cartography=self.model=None
-        self.setWindowTitle('LiDAR forestal integrado · Experimental 0.1.0')
+        self.setWindowTitle('LiDAR forestal integrado · Experimental 0.1.1')
         self.resize(1100,950)
         layout=QVBoxLayout(self)
         title=QLabel('Inventario de parcelas → Modelización → Cartografía DasoLiDAR de 20 × 20 m')

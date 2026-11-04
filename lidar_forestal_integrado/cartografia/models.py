@@ -1,6 +1,7 @@
 """Read modelos.json from modelizacion-qgis; no eval, pickle, refit or new user format.
 
-Prediction matches modelizacion_forestal_lidar 0.4.2, engine.py predict_model,
+Predictions are bounded below at zero, matching the suite modelling engine.
+Original implementation: modelizacion_forestal_lidar 0.4.2, engine.py predict_model,
 commit 09263b4a711fa0b724ee1cd16a622dc496871118 (GPL-3.0).
 """
 import json
@@ -139,7 +140,8 @@ def predictions(metrics,data):
                 value=intercept+sum(v*b for v,b in zip(values,model['coeficientes']))
             value=finite(value)
             if value<0:
-                flags.append('NEGATIVA')
+                flags.append('NEGATIVA_A_CERO')
+                value=0.0
             result[output]=value
         except (ValueError,ArithmeticError):
             flags.append('DOMINIO_INVALIDO')

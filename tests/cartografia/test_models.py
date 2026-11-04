@@ -56,7 +56,7 @@ class ModelTests(unittest.TestCase):
         self.assertEqual(result['N_HA'],92)
         self.assertEqual(states['N_HA'],'FUERA_RANGO')
         result,states=predictions({'cm_Elev P95':2},self.data(model(intercept=-100)))
-        self.assertLess(result['N_HA'],0)
+        self.assertEqual(result['N_HA'],0)
         self.assertIn('NEGATIVA',states['N_HA'])
         result,states=predictions({'cm_Elev P95':0},self.data(model('potencial')))
         self.assertIsNone(result['N_HA'])

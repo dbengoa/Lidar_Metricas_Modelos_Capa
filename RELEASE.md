@@ -1,3 +1,11 @@
+# LiDAR forestal integrado 0.1.1 experimental
+
+Las predicciones negativas se convierten a cero en la selección, validación y aplicación de modelos, incluyendo la cartografía. La ecuación exportada muestra max(0, ecuación) y modelos.json registra la regla.
+
+Los modelos anteriores deben ajustarse de nuevo para obtener errores de validación con esta regla. Los valores ausentes y errores de dominio permanecen inválidos.
+
+Verificación: 172 pruebas superadas; ZIP comprobado y acompañado de SHA-256.
+
 # LiDAR forestal integrado 0.1.0 experimental
 
 Un único instalador QGIS con tres módulos:

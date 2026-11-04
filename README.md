@@ -1,6 +1,6 @@
-# LiDAR forestal integrado — 0.1.0 experimental
+# LiDAR forestal integrado — 0.1.1 experimental
 
-**[⬇️ DESCARGAR INSTALADOR ZIP PARA QGIS](https://github.com/dbengoa/Lidar_Metricas_Modelos_Capa/raw/refs/heads/main/descargas/lidar_forestal_integrado-0.1.0-experimental.zip)**
+**[⬇️ DESCARGAR INSTALADOR ZIP PARA QGIS](https://github.com/dbengoa/Lidar_Metricas_Modelos_Capa/raw/refs/heads/main/descargas/lidar_forestal_integrado-0.1.1-experimental.zip)**
 
 También está en la carpeta [descargas](descargas): abra el ZIP y pulse **Download raw**.
 No use Code → Download ZIP, que descarga el repositorio, no el instalador preparado.
@@ -112,3 +112,8 @@ pruebas de flujo; no se afirman ensayos Windows/CNIG/FUSION reales de esta suite
 
 La referencia de procedencia está en PROCEDENCIA.md y el detalle de validación en
 VALIDACION.md. Licencia GPL-3.0. FUSION, QGIS, Chrome y datos CNIG no se redistribuyen.
+
+
+### Predicciones no negativas (0.1.1)
+
+La modelización aplica `max(0, ecuación)` antes de seleccionar modelos y calcular RMSE y sesgo en la validación interna y externa. Las predicciones CSV y la cartografía también convierten valores negativos en cero, manteniendo un aviso cuando se corrige una predicción. Los errores de archivos modelos.json anteriores no se recalculan al abrirlos: para evaluar esta nueva regla hay que repetir el ajuste. Los valores ausentes o errores de dominio continúan siendo inválidos, no se convierten en cero.

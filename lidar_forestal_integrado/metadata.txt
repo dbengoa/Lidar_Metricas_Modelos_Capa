@@ -1,6 +1,6 @@
 [general]
 name=LiDAR forestal integrado
-version=0.1.0
+version=0.1.1
 qgisMinimumVersion=3.34
 author=dbengoa
 email=

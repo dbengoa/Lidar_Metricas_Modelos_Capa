@@ -311,11 +311,11 @@ def fit_model(X, y, columns, family, options):
             'factor_duan': factor}
 
 
-def predict_model(model, X):
+def predict_model(model, X, *, raw_prediction=False):
     CHECK_CANCEL()
     columns = model['predictores']
     if not columns:
-        return np.full(len(X), model['intercepto'])
+        return np.full(len(X), model['intercepto'] if raw_prediction else max(0.0, model['intercepto']))
     raw = X.loc[:, columns].to_numpy(float)
     raw = np.where(np.isnan(raw), np.asarray(model['medianas']), raw)
     with np.errstate(over='raise', invalid='raise', divide='raise'):
@@ -327,7 +327,7 @@ def predict_model(model, X):
             pred = model['intercepto']+raw@np.asarray(model['coeficientes'])
     if not np.isfinite(pred).all():
         raise ValueError('Predicción no finita')
-    return pred
+    return pred if raw_prediction else np.maximum(pred, 0.0)
 
 
 def select_model(X, y, options, groups=None, seed=None):
@@ -398,9 +398,9 @@ def equation(target, model):
     a = format(model['intercepto'], '.12g')
     if model['familia'] == 'potencial':
         terms = [a]+[f'{label(c)}^({b:.12g})' for c, b in zip(model['predictores'], model['coeficientes'])]
-        return target+' = '+' * '.join(terms)
+        return target+' = max(0, '+' * '.join(terms)+')'
     terms = [a]+[f'({b:.12g}) * {label(c)}' for c, b in zip(model['predictores'], model['coeficientes'])]
-    return target+' = '+' + '.join(terms)
+    return target+' = max(0, '+' + '.join(terms)+')'
 
 
 def effective_options(options, n):
@@ -463,9 +463,10 @@ def calibrate_target(X, y, identifiers, target, options, groups=None):
         'particiones_internas_solicitadas': options.inner,
         'repeticiones': options.repeats}
     final['modo'] = 'exploratorio_muestra_pequena' if exploratory else 'estandar'
-    final['advertencias'] = []
+    final['advertencias'] = ['Las predicciones negativas se convierten a cero en selección, validación y aplicación.']
+    final['politica_prediccion'] = {'minimo': 0, 'aplicada_en_validacion': True}
     if exploratory:
-        final['advertencias'].append('EXPLORATORIO: menos de 20 parcelas; selección y errores de validación muy inestables. No es validación independiente ni garantía de aplicación a otras masas.')
+        final['advertencias'].insert(0, 'EXPLORATORIO: menos de 20 parcelas; selección y errores de validación muy inestables. No es validación independiente ni garantía de aplicación a otras masas.')
     if options.min_predictors:
         final['advertencias'].append(f'Selección restringida a ecuaciones con al menos {options.min_predictors} métricas LiDAR. La media es sólo referencia; exigir predictores no garantiza mejorar su error.')
     if final['familia'] == 'media':
@@ -473,7 +474,7 @@ def calibrate_target(X, y, identifiers, target, options, groups=None):
     if outer_scores['rmse'] >= outer_scores['referencia_rmse']:
         final['advertencias'].append('La validación externa del procedimiento no mejora la media de entrenamiento.')
     if outer_scores['predicciones_negativas']:
-        final['advertencias'].append('Hay predicciones negativas: se conservan para no alterar artificialmente el error.')
+        final['advertencias'].append('Se ha detectado una predicción negativa inesperada.')
     return final, frame, ranking, invalid
 
 
@@ -631,7 +632,8 @@ def fit_command(args):
                    'aviso': 'La CV externa evalúa el procedimiento de selección, no es una prueba independiente del modelo final reajustado.'}
         from ..contracts import metric_protocol
         package['protocolo_metricas']=metric_protocol(args.lidar,args.decimal_lidar)
-        package['suite_version']='0.1.0'
+        package['suite_version']='0.1.1'
+        package['politica_prediccion']={'minimo': 0, 'aplicada_en_validacion': True}
         write_json(destination/'modelos.json', package)
         (destination/'ecuaciones.txt').write_text('\n\n'.join(m['ecuacion']+'\n'+'\n'.join(m['advertencias']) for m in models.values())+'\n', encoding='utf-8')
         write_json(destination/'estado.json', {'estado': 'completado', 'version': VERSION})
@@ -692,9 +694,10 @@ def predict_command(args):
                 if not pd.isna(value) and not lower <= value <= upper:
                     alerts.append('fuera_rango:'+c)
             try:
-                value = float(predict_model(model, row)[0])
+                value = float(predict_model(model, row, raw_prediction=True)[0])
                 if value < 0:
-                    alerts.append('prediccion_negativa')
+                    alerts.append('prediccion_negativa_convertida_a_cero')
+                    value = 0.0
                 if target.startswith('FCC') and value > 100:
                     alerts.append('FCC_superior_100_pct')
             except (ValueError, FloatingPointError):
